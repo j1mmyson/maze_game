@@ -12,26 +12,38 @@ type User struct {
 	score int
 }
 
-// Move moves player as key-in
-func (p *Player) Move(move rune, maze [][]byte) {
+// S1Move : movement of stage1
+func (p *Player) S1Move(move rune, maze [][]byte) {
 
 	maze[p.x][p.y] = 0
 
 	switch move {
 	case 'w':
-		if maze[p.x-1][p.y] != '#' {
+		for {
+			if maze[p.x-1][p.y] == '#' {
+				break
+			}
 			p.x = p.x - 1
 		}
 	case 'a':
-		if maze[p.x][p.y-1] != '#' {
+		for {
+			if maze[p.x][p.y-1] == '#' {
+				break
+			}
 			p.y = p.y - 1
 		}
 	case 'd':
-		if maze[p.x][p.y+1] != '#' {
+		for {
+			if maze[p.x][p.y+1] == '#' {
+				break
+			}
 			p.y = p.y + 1
 		}
 	case 's':
-		if maze[p.x+1][p.y] != '#' {
+		for {
+			if maze[p.x+1][p.y] == '#' {
+				break
+			}
 			p.x = p.x + 1
 		}
 	}
